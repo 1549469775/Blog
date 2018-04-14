@@ -1,2 +1,1 @@
-# ScrapyH
-找一些那种网站的东西
+WTF，看看Linux有没有记录Django的学习记录以及代码
