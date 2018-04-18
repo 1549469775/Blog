@@ -1,0 +1,92 @@
+--------------------------------------基础命令-------------------------------------------
+安装Django:
+sudo apt-get install python-django -y
+sudo apt-get install python3-django -y
+
+安装虚拟环境
+pip install --user virtualenv
+pip3 install --user virtualenv
+apt install virtualenv
+
+安装virtualenvwrapper:
+sudo pip install virtualenv virtualenvwrapper
+具体操作见：blog.csdn.net/liuchunming033/article/details/46009871
+.virtualenvs为所有虚拟环境的目录
+命令自己查看
+mkvirtualenv TT --python=python3.5(Create xuni named TT python's version is 3.5)
+rmvirtualenv learn  (delete)
+workon(switch virtualenv)
+
+创建虚拟环境：virtualenv ll_env
+不同版本：virtualenv ll_env --python=python3--------------(创建了：ll_env)
+
+激活虚拟环境：
+source ll_env/bin/activate
+停止虚拟环境：
+deactivate
+
+安装Django:
+pip install Django(在虚拟环境中，命令都一样)
+pip install Django==2.0.1
+
+创建项目：
+django-admin.py startproject learning_log .(如果忘记了这个  .  记得重新创建)---------------（创建了：learning_log，manage.py）
+ls（显示当前活动目录的结构）
+
+创建数据库：
+python manage.py migrate(迁移数据库，第一次会创建数据库)-------------------（创建了：db.sqlite3）
+
+查看项目，运行服务器：
+python manage.py runserver
+
+--------------------------------------------------------------------------------------
+--------------------------------------项目命令-------------------------------------------
+创建超级用户：
+python manage.py createsuperuser
+(我建的一个：name:ll_admin,pass:ll_admin)
+
+(前提都在开启了虚拟环境之后)
+创建一个应用程序：
+python manage.py startapp learning_logs-----------(创建了learning_logs文件夹)
+添加APP：
+在/home/jhon/桌面/PY/Django/learning_log/learning_log/settings.py文件的INSTALLED_APPS数组尾部添加自己的APP名字
+
+添加模型：
+/home/jhon/桌面/PY/Django/learning_log/learning_logs/models.py
+注册模型位置：
+/home/jhon/桌面/PY/Django/learning_log/learning_logs/admin.py
+
+修改数据库（一般在修改了模型之后，使数据库正确的修改模型数据库）
+python manage.py makemigrations learning_logs---修改
+python manage.py migrate---应用到数据库
+
+------------------Django shell--------------------
+启动一个python解释器：
+python manage.py shell
+ctrl+D退出shell
+每次修改模型后都需要重启shell才能看到效果
+---------------------------------------------------
+创建网页的三个步骤：
+定义url：必须在主APP目录的映射下才能起作用，通常是将url映射至其他模型中使其自定义配置
+编写视图：模型下的views.py
+编写模板：新建的html模板
+url-->视图--->html
+url指向视图，视图响应请求并渲染html
+在视图中可以倒入模型中的类以获取数据库中的值显示在页面上
+
+安装了bootstrap3
+pip install django-bootstrap3
+pip3 install django-bootstrap3
+
+
+
+一般变量使用{{}}
+功能类如循环，条件判断使用{%%}
+Django中的特殊语句：
+forloop.counter 索引从1开始
+forloop.counter0 索引从0开始
+forloop.revcounter 索引从最大元素到1
+forloop.revcounter0 索引从最大元素到0
+forloop.first 当遍历元素为第一项时为真
+forloop.last 当遍历元素为最后一项时为真
+forloop.parentloop 用在嵌套for循环中获取上一层的for循环的forloop

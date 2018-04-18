@@ -1,0 +1,42 @@
+1. 新建一个django project
+  django.admin.py startporject project_name .
+
+2. 新建APP
+  前提：进入项目的目录下
+  python manage.py startapp app_name
+
+3. 创建数据库表 或 更改数据库表或字段
+  Django 1.7.1及以上：
+  #创建更改的文件
+    python manage.py makemigrations
+  #将生成的py文件应用到数据库：
+    python manage.py migrate
+  旧版本Django 1.6及以下：
+    python manage.py syncdb
+
+4. 使用开发服务器：
+  python manage.py runserver
+  端口被占用时：
+  python manage.py runserver 8001（也可杀掉占用端口的进程）
+  python manage.py runserver 0.0.0.0:8000
+
+5. 清空数据库
+  python manage.py flush
+  把数据清除，留着表
+
+6. 创建超级管理员
+  python manage.py createsuperuser
+
+7. 导出数据，导入数据
+  python manage.py dumpdata appname > appname.json
+  python manage.py loaddata appname.json
+
+8. Django项目环境终端
+  python manage.py shell
+
+9. 数据库命令行
+  python manage.py dbshell
+  会进入在setting.py中设置的数据库
+
+10. 更多：
+  python manage.py或者去 官网

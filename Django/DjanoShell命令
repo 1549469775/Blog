@@ -1,0 +1,26 @@
+新建一个对象的命令：
+1. Person.objects.create(name=name,age=age)
+2. p=Person(name="aa",age=20)
+   p.save()
+3. p=Person(name="aa")
+   p.age=20
+   p.save()
+4. Person.objects.get_or_create(name="aa",age=20)
+   可用来防止重复，但速度慢，返回一个元祖，第一个为Person对象，第二个为True或者Fale,新建时返回True，已存在返回False
+
+获取对象：
+1. Person.objects.all()
+2. Person.objects.all()[:10]切片
+3. Person.objects.get(name=name)
+  get时用来获取一个对象的，如果需要筛选的话：
+4. Person.objects.filter(name='abc')等于
+   Person.objects.filter(name_exact='abc')名称严格等于abc的人
+5. Person.objects.filter(name_iexact='abc')名称为abc，但不区分大小写
+6. Person.objects.filter(name_contains='abc')名称中包含'abc'的人
+7. Person.objects.filter(name_icontains='abc')名称中包含'abc'的人,且不区分大小写
+8. Person.objects.filter(name_regex='^abc')正则表达式查询
+9. Person.objects.filter(name_iregex='^abc')正则表达式查询，不区分大小写
+  当然，我们也有排除的条件了:
+10. Person.objects.exclude(name_contains='WZ')排除包含WZ的Person对象
+11. Person.objects.filter(name_contains='abc').exclude(age=23)找出名称含有abc但是
+  年龄排除23的人
